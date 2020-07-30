@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../styles/SortingVisualizer.css';
-import { getMergeSortAnimations } from '../algorithms/sorting/MergeSort';
-import { getQuickSortAnimations } from '../algorithms/sorting/QuickSort';
-import { getHeapSortAnimations } from '../algorithms/sorting/HeapSort';
-import { getBubbleSortAnimations } from '../algorithms/sorting/BubbleSort';
+import { getMergeSortAnimations } from '../algorithms/MergeSort';
+import { getQuickSortAnimations } from '../algorithms/QuickSort';
+import { getHeapSortAnimations } from '../algorithms/HeapSort';
+import { getBubbleSortAnimations } from '../algorithms/BubbleSort';
 
 class SortingVisualizer extends Component {
     state = { 

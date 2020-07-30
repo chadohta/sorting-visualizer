@@ -13,3 +13,9 @@
     vertical-align: top;
     background-color: rgb(30, 199, 221);
 }
+
+button {
+    margin-top: 40px;
+    margin-left: 10px;
+
+}
