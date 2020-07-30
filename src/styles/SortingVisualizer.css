@@ -1,0 +1,15 @@
+.array-container {
+    width: 70%;
+    height: 550px;
+    background-color: rgb(245, 245, 245);
+    text-align: center;
+    margin: 50px auto;
+}
+
+.array-bar {
+    width: 4px;
+    display: inline-block;
+    margin: 3px 2px;
+    vertical-align: top;
+    background-color: rgb(30, 199, 221);
+}
