@@ -17,5 +17,8 @@
 button {
     margin-top: 40px;
     margin-left: 10px;
+}
 
+.resetBtn {
+    margin-right: 10px;
 }

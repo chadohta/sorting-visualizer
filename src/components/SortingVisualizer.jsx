@@ -137,12 +137,6 @@ class SortingVisualizer extends Component {
                     barOneStyle.height = `${heightTwo}px`;
                     barTwoStyle.height = `${heightOne}px`;
                 }, i * 10);
-            // } else if (type === "colorSorted") {
-            //     const barOneIdx = animations[i].barOne;
-            //     const barOneStyle = arrayBars[barOneIdx].style;
-            //     setTimeout(() => {
-            //         barOneStyle.backgroundColor = `rgb(${"255, 145, 55"})`;
-            //     }, i * 5);
             } else { //founds bars or revert colors
                 const color = type === "foundBars" ? `rgb(${"236, 77, 77"})` : `rgb(${"30, 199, 221"})`;
                 const barOneIdx = animations[i].barOne;
@@ -162,11 +156,11 @@ class SortingVisualizer extends Component {
         
         return ( 
             <div>
-                <button onClick={() => this.newArray()}>Generate New Array</button>
                 <button onClick={() => this.visualizeMergeSort()}>Merge Sort</button>
                 <button onClick={() => this.visualizeQuickSort()}>Quick Sort</button>
                 <button onClick={() => this.visualizeHeapSort()}>Heap Sort</button>
                 <button onClick={() => this.visualizeBubbleSort()}>Bubble Sort</button>
+                <button className="resetBtn" onClick={() => this.newArray()}>Reset</button>
 
                 <div className="array-container">
                     {array.map((value, index) => (
