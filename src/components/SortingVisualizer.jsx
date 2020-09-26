@@ -4,6 +4,7 @@ import { getMergeSortAnimations } from '../algorithms/MergeSort';
 import { getQuickSortAnimations } from '../algorithms/QuickSort';
 import { getHeapSortAnimations } from '../algorithms/HeapSort';
 import { getBubbleSortAnimations } from '../algorithms/BubbleSort';
+import Info from './info'
 
 class SortingVisualizer extends Component {
     state = { 
@@ -26,7 +27,34 @@ class SortingVisualizer extends Component {
         });
     }
 
+    lockButtons() {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
+    }
+
+    unlockSortButtons() {
+        const buttons = document.querySelectorAll('.sortBtn');
+        buttons.forEach((button) => {
+            button.disabled = false;
+        });
+    }
+
+    unlockResetButtons() {
+        const buttons = document.querySelectorAll('.resetBtn');
+        buttons.forEach((button) => {
+            button.disabled = false;
+        });
+    }
+
+    reset() { 
+        this.newArray();
+        this.unlockSortButtons();
+    }
+
     visualizeMergeSort() {
+        this.lockButtons();
         const { array } = this.state;
 
         const animations = getMergeSortAnimations(array);
@@ -50,9 +78,13 @@ class SortingVisualizer extends Component {
                 }, i * 10);
             }
         }
+        setTimeout(() => {
+            this.unlockResetButtons();
+        }, 10 * animations.length);
     }
 
     visualizeQuickSort() {
+        this.lockButtons();
         const { array } = this.state;
 
         const animations = getQuickSortAnimations(array);
@@ -64,7 +96,7 @@ class SortingVisualizer extends Component {
                 const pivotBarStyle = arrayBars[pivotBarIdx].style;
                 setTimeout(() => {
                     pivotBarStyle.backgroundColor = `rgb(${"255, 145, 55"})`;
-                }, i * 10);
+                }, i * 100);
             } else if (type === "swapBars") { 
                 const barOneIdx = animations[i].barOne;
                 const barTwoIdx = animations[i].barTwo;
@@ -75,7 +107,7 @@ class SortingVisualizer extends Component {
                 setTimeout(() => {
                     barOneStyle.height = `${heightTwo}px`;
                     barTwoStyle.height = `${heightOne}px`;
-                }, i * 10);
+                }, i * 100);
             } else { //founds bars or revert colors
                 const color = type === "foundBars" ? `rgb(${"236, 77, 77"})` : `rgb(${"30, 199, 221"})`;
                 const barOneIdx = animations[i].barOne;
@@ -85,12 +117,16 @@ class SortingVisualizer extends Component {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * 10);
+                }, i * 100);
             }
         }
+        setTimeout(() => {
+            this.unlockResetButtons();
+        }, 100 * animations.length);
     }
 
     visualizeHeapSort() {
+        this.lockButtons();
         const { array } = this.state;
 
         const animations = getHeapSortAnimations(array);
@@ -117,9 +153,13 @@ class SortingVisualizer extends Component {
                 }, i * 10);
             }
         }
+        setTimeout(() => {
+            this.unlockResetButtons();
+        }, 10 * animations.length);
     }
 
     visualizeBubbleSort() {
+        this.lockButtons();
         const { array } = this.state;
 
         const animations = getBubbleSortAnimations(array);
@@ -149,6 +189,9 @@ class SortingVisualizer extends Component {
                 }, i * 10);
             }
         }
+        setTimeout(() => {
+            this.unlockResetButtons();
+        }, 10 * animations.length);
     }
 
     render() { 
@@ -156,11 +199,11 @@ class SortingVisualizer extends Component {
         
         return ( 
             <div>
-                <button onClick={() => this.visualizeMergeSort()}>Merge Sort</button>
-                <button onClick={() => this.visualizeQuickSort()}>Quick Sort</button>
-                <button onClick={() => this.visualizeHeapSort()}>Heap Sort</button>
-                <button onClick={() => this.visualizeBubbleSort()}>Bubble Sort</button>
-                <button className="resetBtn" onClick={() => this.newArray()}>Reset</button>
+                <h1> Sorting Visualizer </h1>
+                <button className="sortBtn" onClick={() => this.visualizeMergeSort()}>Merge Sort</button>
+                <button className="sortBtn" onClick={() => this.visualizeQuickSort()}>Quick Sort</button>
+                <button className="sortBtn" onClick={() => this.visualizeHeapSort()}>Heap Sort</button>
+                <button className="sortBtn" onClick={() => this.visualizeBubbleSort()}>Bubble Sort</button>
 
                 <div className="array-container">
                     {array.map((value, index) => (
@@ -173,6 +216,13 @@ class SortingVisualizer extends Component {
                         </div>
                     ))}
                 </div>
+
+                <button className="resetBtn" onClick={() => this.reset()}>Reset</button>
+
+                <div className="info-wrapper">
+                    <Info />
+                </div>
+
             </div>
          );
     }
