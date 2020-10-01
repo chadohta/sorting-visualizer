@@ -96,7 +96,7 @@ class SortingVisualizer extends Component {
                 const pivotBarStyle = arrayBars[pivotBarIdx].style;
                 setTimeout(() => {
                     pivotBarStyle.backgroundColor = `rgb(${"255, 145, 55"})`;
-                }, i * 100);
+                }, i * 10);
             } else if (type === "swapBars") { 
                 const barOneIdx = animations[i].barOne;
                 const barTwoIdx = animations[i].barTwo;
@@ -107,7 +107,7 @@ class SortingVisualizer extends Component {
                 setTimeout(() => {
                     barOneStyle.height = `${heightTwo}px`;
                     barTwoStyle.height = `${heightOne}px`;
-                }, i * 100);
+                }, i * 10);
             } else { //founds bars or revert colors
                 const color = type === "foundBars" ? `rgb(${"236, 77, 77"})` : `rgb(${"30, 199, 221"})`;
                 const barOneIdx = animations[i].barOne;
@@ -117,12 +117,12 @@ class SortingVisualizer extends Component {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * 100);
+                }, i * 10);
             }
         }
         setTimeout(() => {
             this.unlockResetButtons();
-        }, 100 * animations.length);
+        }, 10 * animations.length);
     }
 
     visualizeHeapSort() {
