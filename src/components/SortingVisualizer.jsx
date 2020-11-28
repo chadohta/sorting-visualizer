@@ -4,7 +4,7 @@ import { getMergeSortAnimations } from '../algorithms/MergeSort';
 import { getQuickSortAnimations } from '../algorithms/QuickSort';
 import { getHeapSortAnimations } from '../algorithms/HeapSort';
 import { getBubbleSortAnimations } from '../algorithms/BubbleSort';
-import Info from './info'
+import Info from './Info'
 
 class SortingVisualizer extends Component {
     state = { 
