@@ -20,7 +20,7 @@ function merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animation
     let arrayTwoIdx = middleIdx + 1;
     while (arrayOneIdx <= middleIdx && arrayTwoIdx <= endIdx) {
         animations.push([arrayOneIdx, arrayTwoIdx]); // color change (comparing)
-        animations.push([arrayOneIdx, arrayTwoIdx]); // revert color 
+        animations.push([arrayOneIdx, arrayTwoIdx]); // revert color
 
         if (auxiliaryArray[arrayOneIdx] <= auxiliaryArray[arrayTwoIdx]) {
             // value from arrayOne is smaller, set this number in main array
